@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour
 	public Action<KeyCode> OnKeyDown;
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (Input.GetKeyUp(KeyCode.Return))
 		{
 			OnKeyDown(KeyCode.Return);
 		}

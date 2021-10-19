@@ -5,22 +5,23 @@ using System.Collections.Generic;
 
 namespace Itibsoft.ConsoleDeveloper.Console
 {
-	public class Commands
+	public static class CommandsList
 	{
-		private List<ICommand> _commands = new List<ICommand>
+		public static List<ICommand> Commands = new List<ICommand>
 		{
-			new HelpCommand()
+			new HelpCommand(),
+			new LogFullCommand()
 		};
 
-		public ICommand GetCommand(string name)
+		public static ICommand GetCommand(string name)
 		{
 			if (Tools.IsNull(name)) return null;
 
 			ICommand tempCommand = null;
 
-			foreach (var command in _commands)
+			foreach (var command in Commands)
 			{
-				if(command.Name == name)
+				if(command.Name.ToLower() == name.ToLower())
 				{
 					tempCommand = command;
 					break;

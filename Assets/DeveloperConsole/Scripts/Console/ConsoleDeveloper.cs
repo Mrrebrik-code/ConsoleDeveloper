@@ -1,4 +1,5 @@
 using Itibsoft.ConsoleDeveloper.Core;
+using Itibsoft.ConsoleDeveloper.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,6 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		[SerializeField] private Logger _logger;
 		[SerializeField] private Buffer _buffer;
 		[SerializeField] private Input _input;
-
-		private Commands _commands = new Commands();
 
 		private void Start()
 		{
@@ -34,14 +33,15 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		public void Send()
 		{
-			ICommand command = _commands.GetCommand(_input.GetInputText());
+			ICommand command = CommandsList.GetCommand(_input.GetInputText());
+
 			if (command != null) ExecuteCommand(command);
+			else Logger.Instance.AddLog(Tools.SetColorText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " +  Tools.SetColorText("This command is not recognized", TypeColor.Yellow));
 		}
 
 		private void ExecuteCommand(ICommand command)
 		{
 			command.Execute();
-			_logger.AddLog($"Execute: {command.ToString()}");
 		}
 	}
 }
