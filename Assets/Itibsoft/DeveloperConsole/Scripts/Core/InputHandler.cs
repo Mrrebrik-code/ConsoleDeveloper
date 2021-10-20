@@ -16,5 +16,13 @@ public class InputHandler : MonoBehaviour
 		{
 			OnKeyDown(KeyCode.BackQuote);
 		}
+		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			OnKeyDown(KeyCode.UpArrow);
+		}
+		if (Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			OnKeyDown(KeyCode.DownArrow);
+		}
 	}
 }

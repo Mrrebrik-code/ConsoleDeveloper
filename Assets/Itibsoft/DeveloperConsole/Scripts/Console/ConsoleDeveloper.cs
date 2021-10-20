@@ -12,6 +12,8 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		[SerializeField] private Buffer _buffer;
 		[SerializeField] private Input _input;
 
+		private HistoryCommands _history = new HistoryCommands();
+
 		private void Start()
 		{
 			_inputHandler.OnKeyDown += OnKeyHandler;
@@ -26,6 +28,12 @@ namespace Itibsoft.ConsoleDeveloper.Console
 					break;
 				case KeyCode.Return:
 					Send();
+					break;
+				case KeyCode.UpArrow:
+					if(_input.IsSelection) _input.SetInputText(_history.GetCommandFromHistory(vector: true).Name);
+					break;
+				case KeyCode.DownArrow:
+					if (_input.IsSelection) _input.SetInputText(_history.GetCommandFromHistory(vector: false).Name);
 					break;
 			}
 		}
@@ -43,6 +51,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		private void ExecuteCommand(ICommand command)
 		{
 			command.Execute();
+			_history.AddHistory(command);
 		}
 	}
 }
