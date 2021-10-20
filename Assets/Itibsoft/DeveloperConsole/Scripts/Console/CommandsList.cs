@@ -21,7 +21,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 			foreach (var command in Commands)
 			{
-				if(command.Name.ToLower() == name.ToLower())
+				if(command.Name.ToLower() == name.ToLower().Trim('/'))
 				{
 					tempCommand = command;
 					break;

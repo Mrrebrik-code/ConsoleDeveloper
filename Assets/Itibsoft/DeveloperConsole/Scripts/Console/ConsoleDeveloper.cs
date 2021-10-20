@@ -37,7 +37,9 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			ICommand command = CommandsList.GetCommand(_input.GetInputText());
 
 			if (command != null) ExecuteCommand(command);
-			else Logger.Instance.AddLog(Tools.SetColorText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " +  Tools.SetColorText("This command is not recognized", TypeColor.Yellow));
+			else Logger.Instance.AddLog(Tools.SetColorText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.SetColorText("This command is not recognized", TypeColor.Yellow));
+
+			_input.ClearInputField();
 		}
 
 		private void ExecuteCommand(ICommand command)
