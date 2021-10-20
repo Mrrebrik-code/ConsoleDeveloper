@@ -8,20 +8,9 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		[SerializeField] private TMP_InputField _inputField;
 		public bool IsSelection { get; private set; }
 
-		public string GetInputText()
-		{
-			return _inputField.text;
-		}
-
-		public void SetInputText(string text)
-		{
-			_inputField.text = text;
-		}
-
-		public void ClearInputField()
-		{
-			_inputField.text = "";
-		}
+		public void IsAllowInput(bool selection) => IsSelection = selection;
+		public void SetInputText(string text) => _inputField.text = text;
+		public void ClearInputField() => _inputField.text = "";
 
 		public void TrimImputText()
 		{
@@ -32,9 +21,9 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			}	
 		}
 
-		public void IsAllowInput(bool selection)
+		public string GetInputText()
 		{
-			IsSelection = selection;
+			return _inputField.text;
 		}
 	}
 }

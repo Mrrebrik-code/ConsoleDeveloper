@@ -37,9 +37,9 @@ namespace Itibsoft.ConsoleDeveloper.Utils
 			else return false;
 		}
 
-		public static bool Compare(string one, string two)
+		public static bool Compare(string text1, string text2)
 		{
-			return one == two;
+			return text1 == text2;
 		}
 	}
 }

@@ -14,10 +14,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		private HistoryCommands _history = new HistoryCommands();
 
-		private void Start()
-		{
-			_inputHandler.OnKeyDown += OnKeyHandler;
-		}
+		private void Start() => _inputHandler.OnKeyDown += OnKeyHandler;
 
 		private void OnKeyHandler(KeyCode key)
 		{

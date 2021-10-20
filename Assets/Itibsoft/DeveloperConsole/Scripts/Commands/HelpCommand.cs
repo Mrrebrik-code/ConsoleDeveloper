@@ -18,7 +18,7 @@ namespace Itibsoft.ConsoleDeveloper.Commands
 			{
 				listCommands += $"{i + 1}. {CommandsList.Commands[i].Name} - {CommandsList.Commands[i].Description}" + "\n";
 			}
-			Console.Logger.Instance.AddLog(listCommands);
+			Logger.Instance.AddLog(listCommands);
 		}
 	}
 }

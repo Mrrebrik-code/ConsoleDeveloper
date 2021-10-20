@@ -13,10 +13,9 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		[SerializeField] private TMP_Text _loggerText;
 
 		public bool IsFullLog = true;
-		private void Awake()
-		{
-			Instance = this;
-		}
+
+		private void Awake() => Instance = this;
+
 		public void AddLog(string log)
 		{
 			if (!IsFullLog && log.Contains("Execute")) return;
@@ -31,9 +30,6 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			_scrollbar.value = 0;
 		}
 
-		public void ClearLog()
-		{
-			_loggerText.text = "";
-		}
+		public void ClearLog() => _loggerText.text = "";
 	}
 }

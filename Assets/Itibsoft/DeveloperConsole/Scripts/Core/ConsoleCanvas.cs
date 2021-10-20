@@ -12,10 +12,8 @@ namespace Itibsoft.ConsoleDeveloper.Core
 		private Canvas _canvas;
 		private CanvasScaler _canvasScaler;
 
-		private void Awake()
-		{
-			Init();
-		}
+		private void Awake() => Init();
+
 		private void Init()
 		{
 			_camera = Camera.main;

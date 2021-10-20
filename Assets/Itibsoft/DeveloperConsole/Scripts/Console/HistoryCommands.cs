@@ -14,10 +14,8 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		private List<ICommand> _historyCommands = new List<ICommand>();
 		private int _index = default;
 
-		public HistoryCommands()
-		{
-			Instance = this;
-		}
+		public HistoryCommands() => Instance = this;
+
 		public void AddHistory(ICommand command)
 		{
 			_historyCommands.Add(command);
