@@ -30,14 +30,22 @@ namespace Itibsoft.ConsoleDeveloper.Console
 					Send();
 					break;
 				case KeyCode.UpArrow:
-					if(_input.IsSelection) _input.SetInputText(_history.GetCommandFromHistory(vector: true).Name);
+					GetHistoryCommandToInput(vector: true);
 					break;
 				case KeyCode.DownArrow:
-					if (_input.IsSelection) _input.SetInputText(_history.GetCommandFromHistory(vector: false).Name);
+					GetHistoryCommandToInput(vector: false);
 					break;
 			}
 		}
 
+		public void GetHistoryCommandToInput(bool vector)
+		{
+			if (_input.IsSelection)
+			{
+				ICommand command = _history.GetCommandFromHistory(vector);
+				if (command != null) _input.SetInputText(command.Name);
+			}
+		}
 		public void Send()
 		{
 			ICommand command = CommandsList.GetCommand(_input.GetInputText());
@@ -50,8 +58,8 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		private void ExecuteCommand(ICommand command)
 		{
-			command.Execute();
 			_history.AddHistory(command);
+			command.Execute();
 		}
 	}
 }

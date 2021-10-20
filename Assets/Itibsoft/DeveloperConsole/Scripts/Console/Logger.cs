@@ -22,13 +22,18 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			if (!IsFullLog && log.Contains("Execute")) return;
 
 			_loggerText.text += $"\n{log}";
-			StartCoroutine(Dealy());
+			StartCoroutine(ScrollbarToEnd());
 		}
 
-		private IEnumerator Dealy()
+		private IEnumerator ScrollbarToEnd()
 		{
 			yield return new WaitForSeconds(0.1f);
 			_scrollbar.value = 0;
+		}
+
+		public void ClearLog()
+		{
+			_loggerText.text = "";
 		}
 	}
 }

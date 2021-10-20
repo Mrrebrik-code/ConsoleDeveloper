@@ -10,7 +10,8 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		public static List<ICommand> Commands = new List<ICommand>
 		{
 			new HelpCommand(),
-			new LogFullCommand()
+			new LogFullCommand(),
+			new ClearConsoleCommand()
 		};
 
 		public static ICommand GetCommand(string name)
