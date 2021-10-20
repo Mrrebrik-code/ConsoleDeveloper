@@ -32,5 +32,18 @@ namespace Itibsoft.ConsoleDeveloper.Utils
 			}
 			return textColor;
 		}
+
+		public static bool Cotains(string text, string search, bool toLower = false)
+		{
+			var tempText = toLower ? text.ToLower() : text;
+
+			if (tempText.Contains(search)) return true;
+			else return false;
+		}
+
+		public static bool Compare(string one, string two)
+		{
+			return one == two;
+		}
 	}
 }

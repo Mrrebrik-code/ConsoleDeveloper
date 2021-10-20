@@ -6,7 +6,7 @@ namespace Itibsoft.ConsoleDeveloper.Commands
 {
 	public class LogFullCommand : ICommand
 	{
-		public override string Name => "Log.Full";
+		public override string Name => "Hels";//Log.Full
 
 		public override string Description => $"Logger full contoller[ {Tools.SetColorText("OFF", TypeColor.Red)} / {Tools.SetColorText("ON", TypeColor.Green)} ]";
 
