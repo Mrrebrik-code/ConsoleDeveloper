@@ -11,8 +11,7 @@ namespace Itibsoft.ConsoleDeveloper.Commands
 
 		public override void Execute()
 		{
-			Console.Logger.Instance.AddLog($"{Tools.SetColorText("Execute:", TypeColor.Red)} " +
-				$"{this.ToString().Replace(this.GetType().Name, Tools.SetColorText(this.GetType().Name, TypeColor.Yellow))}");
+			base.Execute();
 
 			var listCommands = Tools.SetColorText("Commands:", TypeColor.Green) + "\n";
 			for (int i = 0; i < CommandsList.Commands.Count; i++)

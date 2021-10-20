@@ -26,10 +26,10 @@ namespace Itibsoft.ConsoleDeveloper.Console
 						else break;
 					}
 
-					Regex regex = new Regex(_input.GetInputText().ToLower());
+					Regex regex = new Regex(_input.GetInputText().ToLower().Trim('/'));
 					MatchCollection matches = regex.Matches(tempNameCommand.ToLower());
 
-					if (matches.Count > 0 && !Tools.Cotains(_tempBuffer, tempNameCommand, toLower: true))
+					if (matches.Count > 0 && !Tools.Contains(_tempBuffer, tempNameCommand, toLower: true))
 							_tempBuffer += $"{command.Name} - {command.Description}" + "\n";
 				});
 			}

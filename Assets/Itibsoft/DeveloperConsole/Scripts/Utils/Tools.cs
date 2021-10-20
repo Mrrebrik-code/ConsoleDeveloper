@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Itibsoft.ConsoleDeveloper.Utils
 {
 	public static class Tools
@@ -33,7 +29,7 @@ namespace Itibsoft.ConsoleDeveloper.Utils
 			return textColor;
 		}
 
-		public static bool Cotains(string text, string search, bool toLower = false)
+		public static bool Contains(string text, string search, bool toLower = false)
 		{
 			var tempText = toLower ? text.ToLower() : text;
 

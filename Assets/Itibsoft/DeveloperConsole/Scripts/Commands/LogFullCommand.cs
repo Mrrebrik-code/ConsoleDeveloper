@@ -6,9 +6,22 @@ namespace Itibsoft.ConsoleDeveloper.Commands
 {
 	public class LogFullCommand : ICommand
 	{
-		public override string Name => "Hels";//Log.Full
+		public override string Name => "Log.Full";
 
-		public override string Description => $"Logger full contoller[ {Tools.SetColorText("OFF", TypeColor.Red)} / {Tools.SetColorText("ON", TypeColor.Green)} ]";
+		public override string Description{ 
+			get
+			{
+				if (Logger.Instance.IsFullLog)
+				{
+					return $"Logger full contoller[ {Tools.SetColorText("OFF", TypeColor.Red)} / {Tools.SetColorText("ON", TypeColor.Green)} ]";
+				}
+				else
+				{
+					return $"Logger full contoller[ {Tools.SetColorText("OFF", TypeColor.Green)} / {Tools.SetColorText("ON", TypeColor.Red)} ]";
+				}
+			} 
+		}
+		private bool _isColor = false;
 
 		public override void Execute()
 		{
