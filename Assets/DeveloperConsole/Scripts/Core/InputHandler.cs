@@ -12,9 +12,9 @@ public class InputHandler : MonoBehaviour
 		{
 			OnKeyDown(KeyCode.Return);
 		}
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.BackQuote))
 		{
-			OnKeyDown(KeyCode.Escape);
+			OnKeyDown(KeyCode.BackQuote);
 		}
 	}
 }

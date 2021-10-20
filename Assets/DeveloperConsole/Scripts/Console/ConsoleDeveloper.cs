@@ -9,6 +9,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 	public class ConsoleDeveloper : MonoBehaviour
 	{
 		[SerializeField] private InputHandler _inputHandler;
+		[SerializeField] private GameObject _consoleObject;
 		[SerializeField] private Logger _logger;
 		[SerializeField] private Buffer _buffer;
 		[SerializeField] private Input _input;
@@ -22,8 +23,8 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		{
 			switch(key)
 			{
-				case KeyCode.Escape:
-					Debug.Log("Show");
+				case KeyCode.BackQuote:
+					_consoleObject.SetActive(!_consoleObject.activeInHierarchy);
 					break;
 				case KeyCode.Return:
 					Send();
