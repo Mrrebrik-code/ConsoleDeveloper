@@ -147,7 +147,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 255430284065657814}
         m_TargetAssemblyTypeName: Itibsoft.ConsoleDeveloper.Console.Input, Assembly-CSharp
-        m_MethodName: TrimImputText
+        m_MethodName: TrimInputText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -159,7 +159,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 255430284065657814}
         m_TargetAssemblyTypeName: Itibsoft.ConsoleDeveloper.Console.Input, Assembly-CSharp
-        m_MethodName: IsAllowInput
+        m_MethodName: SetSelection
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 255430284065657814}
         m_TargetAssemblyTypeName: Itibsoft.ConsoleDeveloper.Console.Input, Assembly-CSharp
-        m_MethodName: IsAllowInput
+        m_MethodName: SetSelection
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

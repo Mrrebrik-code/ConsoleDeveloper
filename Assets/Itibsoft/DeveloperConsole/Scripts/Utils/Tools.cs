@@ -1,45 +1,38 @@
+using UnityEngine;
+
 namespace Itibsoft.ConsoleDeveloper.Utils
 {
 	public static class Tools
 	{
 		public static bool IsNull(string text)
 		{
-			if (text == null || text.Contains(" ") || text == "") return true;
-			return false;
+			return string.IsNullOrWhiteSpace(text);
+		}
+		
+		public static string GetColoredRichText(string text, Color color)
+		{
+			var colorInvariant = "#" + ColorUtility.ToHtmlStringRGB(color);
+			
+			return $"<color=\"{colorInvariant}\">{text}</color=\"{colorInvariant}\">";
 		}
 
-		public static string SetColorText(string text, TypeColor color)
+		public static string GetColoredRichText(string text, TypeColor color)
 		{
-			var textColor = "";
-			switch (color)
-			{
-				case TypeColor.Red:
-					textColor = $"<color=\"red\">{text}</color=\"red\">";
-					break;
-				case TypeColor.Green:
-					textColor = $"<color=\"green\">{text}</color=\"green\">";
-					break;
-				case TypeColor.Blue:
-					textColor = $"<color=\"blue\">{text}</color=\"blue\">";
-					break;
-				case TypeColor.Yellow:
-					textColor = $"<color=\"yellow\">{text}</color=\"yellow\">";
-					break;
-			}
-			return textColor;
+			var colorInvariant = color.ToString().ToLowerInvariant();
+			
+			return $"<color=\"{colorInvariant}\">{text}</color=\"{colorInvariant}\">";
 		}
 
 		public static bool Contains(string text, string search, bool toLower = false)
 		{
 			var tempText = toLower ? text.ToLower() : text;
 
-			if (tempText.Contains(search)) return true;
-			else return false;
+			return tempText.Contains(search);
 		}
 
 		public static bool Compare(string text1, string text2)
 		{
-			return text1 == text2;
+			return Equals(text1, text2);
 		}
 	}
 }

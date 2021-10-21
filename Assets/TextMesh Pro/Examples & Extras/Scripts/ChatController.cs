@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -38,7 +39,7 @@ public class ChatController : MonoBehaviour {
             if (ChatDisplayOutput.text == string.Empty)
                 ChatDisplayOutput.text = formattedInput;
             else
-                ChatDisplayOutput.text += "\n" + formattedInput;
+                ChatDisplayOutput.text += Environment.NewLine + formattedInput;
         }
 
         // Keep Chat input field active

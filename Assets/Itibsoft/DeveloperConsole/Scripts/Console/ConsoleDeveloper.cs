@@ -14,7 +14,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		private HistoryCommands _history = new HistoryCommands();
 
-		private void Start() => _inputHandler.OnKeyDown += OnKeyHandler;
+		private void Start() => _inputHandler.KeyDownEvent += OnKeyHandler;
 
 		private void OnKeyHandler(KeyCode key)
 		{
@@ -37,7 +37,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		public void GetHistoryCommandToInput(bool vector)
 		{
-			if (_input.IsSelection)
+			if (_input.IsAllowInput)
 			{
 				ICommand command = _history.GetCommandFromHistory(vector);
 				if (command != null) _input.SetInputText(command.Name);
@@ -48,7 +48,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			ICommand command = CommandsList.GetCommand(_input.GetInputText());
 
 			if (command != null) ExecuteCommand(command);
-			else Logger.Instance.AddLog(Tools.SetColorText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.SetColorText("This command is not recognized", TypeColor.Yellow));
+			else Logger.Instance.AddLog(Tools.GetColoredRichText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.GetColoredRichText("This command is not recognized", TypeColor.Yellow));
 
 			_input.ClearInputField();
 		}

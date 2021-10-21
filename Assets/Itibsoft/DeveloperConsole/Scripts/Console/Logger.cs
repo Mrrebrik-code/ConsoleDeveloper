@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		{
 			if (!IsFullLog && log.Contains("Execute")) return;
 
-			_loggerText.text += $"\n{log}";
+			_loggerText.text += $"{Environment.NewLine}{log}";
 			StartCoroutine(ScrollbarToEnd());
 		}
 
