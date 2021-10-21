@@ -9,8 +9,8 @@ namespace Itibsoft.ConsoleDeveloper.Core
 		public abstract string Description { get; }
 		public virtual void Execute()
 		{
-			Console.Logger.Instance.AddLog($"{Tools.SetColorText("Execute:", TypeColor.Green)} " +
-				$"{this.ToString().Replace(this.GetType().Name, Tools.SetColorText(this.GetType().Name, TypeColor.Yellow))}");
+			Console.Logger.Instance.AddLog($"{Tools.GetColoredRichText("Execute:", TypeColor.Green)} " +
+				$"{this.ToString().Replace(this.GetType().Name, Tools.GetColoredRichText(this.GetType().Name, TypeColor.Yellow))}");
 		}
 	}
 }

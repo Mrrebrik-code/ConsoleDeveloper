@@ -30,7 +30,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			else _index--;
 
 			if (_index < 0) _index = 0;
-			else if (_index > _historyCommands.Count - 1) _index = _historyCommands.Count - 1;
+			else if (_index >= _historyCommands.Count) _index = _historyCommands.Count - 1;
 
 			return _historyCommands[_index];
 		}

@@ -23,9 +23,10 @@ namespace Itibsoft.ConsoleDeveloper.Core
 			_canvas.renderMode = RenderMode.ScreenSpaceCamera;
 			_canvas.worldCamera = _camera;
 
-			_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-			_canvasScaler.referenceResolution = new Vector2(Screen.width, Screen.height);
-			_canvasScaler.matchWidthOrHeight = 0.5f;
+			// Зачем переопределять эти параметры в рантайме?
+			//_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+			//_canvasScaler.referenceResolution = new Vector2(Screen.width, Screen.height);
+			//_canvasScaler.matchWidthOrHeight = 0.5f;
 		}
 	}
 }

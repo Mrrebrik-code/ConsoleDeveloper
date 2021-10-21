@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255430283101107897, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27.899902
+      objectReference: {fileID: 0}
     - target: {fileID: 255430283748438538, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
       propertyPath: m_Name
       value: ConsoleDeveloper

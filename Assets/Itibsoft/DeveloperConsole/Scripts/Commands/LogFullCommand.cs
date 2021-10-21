@@ -11,16 +11,10 @@ namespace Itibsoft.ConsoleDeveloper.Commands
 		public override string Description{ 
 			get
 			{
-				if (Logger.Instance.IsFullLog)
-				{
-					return $"Logger full contoller[ {Tools.SetColorText("OFF", TypeColor.Red)} / {Tools.SetColorText("ON", TypeColor.Green)} ]";
-				}
-				else
-				{
-					return $"Logger full contoller[ {Tools.SetColorText("OFF", TypeColor.Green)} / {Tools.SetColorText("ON", TypeColor.Red)} ]";
-				}
+				return $"Logger full contoller[ {Tools.GetColoredRichText("OFF", GetTypeColorForIsFullLogReverse())} / {Tools.GetColoredRichText("ON", GetTypeColorForIsFullLog())} ]";
 			} 
 		}
+		
 		private bool _isColor = false;
 
 		public override void Execute()
@@ -28,15 +22,18 @@ namespace Itibsoft.ConsoleDeveloper.Commands
 			base.Execute();
 
 			Logger.Instance.IsFullLog = !Logger.Instance.IsFullLog;
-			if (Logger.Instance.IsFullLog)
-			{
-				Logger.Instance.AddLog($"Logger IsFullLog = {Tools.SetColorText(Logger.Instance.IsFullLog.ToString(), TypeColor.Green)}");
-			}
-			else
-			{
-				Logger.Instance.AddLog($"Logger IsFullLog = {Tools.SetColorText(Logger.Instance.IsFullLog.ToString(), TypeColor.Red)}");
-			}
+			Logger.Instance.AddLog($"Logger IsFullLog = {Tools.GetColoredRichText(Logger.Instance.IsFullLog.ToString(), GetTypeColorForIsFullLog())}");
 			
+		}
+
+		private TypeColor GetTypeColorForIsFullLog()
+		{
+			return Logger.Instance.IsFullLog ? TypeColor.Green : TypeColor.Red;
+		}
+		
+		private TypeColor GetTypeColorForIsFullLogReverse()
+		{
+			return Logger.Instance.IsFullLog ? TypeColor.Red : TypeColor.Green;
 		}
 	}
 }

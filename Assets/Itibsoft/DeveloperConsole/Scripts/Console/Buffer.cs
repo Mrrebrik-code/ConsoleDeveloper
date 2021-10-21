@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
 using Itibsoft.ConsoleDeveloper.Utils;
@@ -30,7 +31,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 					MatchCollection matches = regex.Matches(tempNameCommand.ToLower());
 
 					if (matches.Count > 0 && !Tools.Contains(_tempBuffer, tempNameCommand, toLower: true))
-							_tempBuffer += $"{command.Name} - {command.Description}" + "\n";
+							_tempBuffer += $"{command.Name} - {command.Description}" + Environment.NewLine;
 				});
 			}
 			else _tempBuffer = "";
