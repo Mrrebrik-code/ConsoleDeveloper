@@ -4,7 +4,7 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
-	public class LogFullCommand : ICommand
+	public class LogFullCommand : AbstractCommand
 	{
 		public override string Name => "Log.Full";
 

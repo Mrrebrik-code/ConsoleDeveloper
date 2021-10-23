@@ -7,18 +7,18 @@ namespace Itibsoft.ConsoleDeveloper.Console
 {
 	public static class CommandsList
 	{
-		public static List<ICommand> Commands = new List<ICommand>
+		public static List<AbstractCommand> Commands = new List<AbstractCommand>
 		{
 			new HelpCommand(),
 			new LogFullCommand(),
 			new ClearConsoleCommand()
 		};
 
-		public static ICommand GetCommand(string name)
+		public static AbstractCommand GetCommand(string name)
 		{
 			if (Tools.IsNull(name)) return null;
 
-			ICommand tempCommand = null;
+			AbstractCommand tempCommand = null;
 
 			foreach (var command in Commands)
 			{

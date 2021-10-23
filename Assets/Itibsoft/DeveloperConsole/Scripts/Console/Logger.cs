@@ -13,7 +13,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		[SerializeField] private Scrollbar _scrollbar;
 		[SerializeField] private TMP_Text _loggerText;
 
-		public bool IsFullLog = true;
+		public bool IsFullLog{ get; set; } = true;
 
 		private void Awake() => Instance = this;
 

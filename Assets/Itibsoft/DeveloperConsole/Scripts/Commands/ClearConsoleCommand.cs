@@ -4,7 +4,7 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
-	public class ClearConsoleCommand : ICommand
+	public class ClearConsoleCommand : AbstractCommand
 	{
 		public override string Name => "Clear";
 

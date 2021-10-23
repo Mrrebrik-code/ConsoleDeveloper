@@ -5,7 +5,7 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
-	public class HelpCommand : ICommand
+	public class HelpCommand : AbstractCommand
 	{
 		public override string Name => "Help";
 		public override string Description => "Info more command";
