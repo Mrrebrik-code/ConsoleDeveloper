@@ -4,18 +4,16 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
-	public class ClearConsoleCommand : AbstractCommand
+	public class ClearConsoleCommand : ICommand
 	{
-		public override string Name => "Clear";
+		public  string Name { get => "Clear"; set{ } }
 
-		public override string Description => "Clear console";
+		public string Description { get => "Clear console"; set { } }
 
-		public override void Execute()
+		public void Execute()
 		{
 			Logger.Instance.ClearLog();
 			HistoryCommands.Instance.ClearHistory();
-
-			base.Execute();
 		}
 	}
 }

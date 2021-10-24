@@ -18,7 +18,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			if(!Tools.IsNull(_input.GetInputText()))
 			{
 				_tempBuffer = "";
-				CommandsList.Commands.ForEach(command =>
+				CommandsList.Instance.Commands.ForEach(command =>
 				{
 					string tempNameCommand = "";
 					for (int i = 0; i < _input.GetInputText().Length; i++)

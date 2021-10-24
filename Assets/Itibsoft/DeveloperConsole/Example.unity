@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 255430283101107897, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 27.899902
-      objectReference: {fileID: 0}
     - target: {fileID: 255430283748438538, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
       propertyPath: m_Name
       value: ConsoleDeveloper
@@ -222,7 +218,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 505692359261006603, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
 --- !u!1 &268603850
 GameObject:

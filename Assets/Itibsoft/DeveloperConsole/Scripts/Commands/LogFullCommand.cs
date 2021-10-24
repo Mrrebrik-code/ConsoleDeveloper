@@ -4,25 +4,22 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
-	public class LogFullCommand : AbstractCommand
+	public class LogFullCommand : ICommand
 	{
-		public override string Name => "Log.Full";
-
-		public override string Description{ 
+		public string Name { get => "Log.Full"; set { } }
+		public string Description 
+		{
 			get
 			{
 				return $"Logger full contoller[ {Tools.GetColoredRichText("OFF", GetTypeColorForIsFullLogReverse())} / {Tools.GetColoredRichText("ON", GetTypeColorForIsFullLog())} ]";
 			} 
+			set { } 
 		}
-		
-		private bool _isColor = false;
 
-		public override void Execute()
+		public void Execute()
 		{
-			base.Execute();
-
 			Logger.Instance.IsFullLog = !Logger.Instance.IsFullLog;
-			Logger.Instance.AddLog($"Logger IsFullLog = {Tools.GetColoredRichText(Logger.Instance.IsFullLog.ToString(), GetTypeColorForIsFullLog())}");
+			Logger.Instance.AddLog($"Logger IsFullLog = {Tools.GetColoredRichText(Logger.Instance.IsFullLog.ToString(), GetTypeColorForIsFullLog())}", this);
 			
 		}
 

@@ -8,7 +8,11 @@ namespace Itibsoft.ConsoleDeveloper.Utils
 		{
 			return string.IsNullOrWhiteSpace(text);
 		}
-		
+		public static bool IsNull(object obj)
+		{
+			return obj == null;
+		}
+
 		public static string GetColoredRichText(string text, Color color)
 		{
 			var colorInvariant = "#" + ColorUtility.ToHtmlStringRGB(color);

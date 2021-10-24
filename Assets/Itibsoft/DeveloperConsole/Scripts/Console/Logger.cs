@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Itibsoft.ConsoleDeveloper.Core;
+using Itibsoft.ConsoleDeveloper.Utils;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -17,14 +19,22 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		private void Awake() => Instance = this;
 
-		public void AddLog(string log)
+		public void AddLog(string log, ICommand command = null)
 		{
-			if (!IsFullLog && log.Contains("Execute")) return;
+			_loggerText.text += CurrentExecuteCommand(command);
 
 			_loggerText.text += $"{Environment.NewLine}{log}";
 			StartCoroutine(ScrollbarToEnd());
 		}
 
+		private string CurrentExecuteCommand(ICommand command)
+		{
+			if (!IsFullLog && !Tools.IsNull(command)) return null;
+
+			string tempLog = $"{Tools.GetColoredRichText("Execute:", TypeColor.Green)} " +
+				$"{command.ToString().Replace(command.GetType().Name, Tools.GetColoredRichText(command.GetType().Name, TypeColor.Yellow))}";
+			return tempLog;
+		}
 		private IEnumerator ScrollbarToEnd()
 		{
 			yield return new WaitForSeconds(0.1f);

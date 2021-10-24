@@ -39,13 +39,13 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		{
 			if (_input.IsAllowInput)
 			{
-				AbstractCommand command = _history.GetCommandFromHistory(vector);
+				ICommand command = _history.GetCommandFromHistory(vector);
 				if (command != null) _input.SetInputText(command.Name);
 			}
 		}
 		public void Send()
 		{
-			AbstractCommand command = CommandsList.GetCommand(_input.GetInputText());
+			ICommand command = CommandsList.Instance.GetCommand(_input.GetInputText());
 
 			if (command != null) ExecuteCommand(command);
 			else Logger.Instance.AddLog(Tools.GetColoredRichText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.GetColoredRichText("This command is not recognized", TypeColor.Yellow));
@@ -53,7 +53,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			_input.ClearInputField();
 		}
 
-		private void ExecuteCommand(AbstractCommand command)
+		private void ExecuteCommand(ICommand command)
 		{
 			_history.AddHistory(command);
 			command.Execute();

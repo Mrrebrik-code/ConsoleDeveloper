@@ -11,18 +11,18 @@ namespace Itibsoft.ConsoleDeveloper.Console
 	{
 		public static HistoryCommands Instance;
 
-		private List<AbstractCommand> _historyCommands = new List<AbstractCommand>();
+		private List<ICommand> _historyCommands = new List<ICommand>();
 		private int _index = default;
 
 		public HistoryCommands() => Instance = this;
 
-		public void AddHistory(AbstractCommand command)
+		public void AddHistory(ICommand command)
 		{
 			_historyCommands.Add(command);
 			_index = _historyCommands.Count - 1;
 		}
 
-		public AbstractCommand GetCommandFromHistory(bool vector)
+		public ICommand GetCommandFromHistory(bool vector)
 		{
 			if (_historyCommands.Count < 1) return null;
 
@@ -37,7 +37,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		public void ClearHistory()
 		{
-			_historyCommands = new List<AbstractCommand>();
+			_historyCommands = new List<ICommand>();
 			_index = default;
 		}
 	}
