@@ -1,5 +1,6 @@
 using Itibsoft.ConsoleDeveloper.Core;
 using Itibsoft.ConsoleDeveloper.Utils;
+using System;
 using UnityEngine;
 
 namespace Itibsoft.ConsoleDeveloper.Console
@@ -48,7 +49,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			ICommand command = CommandsList.Instance.GetCommand(_input.GetInputText());
 
 			if (command != null) ExecuteCommand(command);
-			else Logger.Instance.AddLog(Tools.GetColoredRichText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.GetColoredRichText("This command is not recognized", TypeColor.Yellow));
+			else Logger.Instance.AddLog(Tools.GetColoredRichText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.GetColoredRichText("This command is not recognized", TypeColor.Yellow) + Environment.NewLine);
 
 			_input.ClearInputField();
 		}

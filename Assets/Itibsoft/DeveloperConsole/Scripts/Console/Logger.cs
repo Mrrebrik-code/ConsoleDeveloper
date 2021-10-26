@@ -21,15 +21,15 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		public void AddLog(string log, ICommand command = null)
 		{
-			_loggerText.text += CurrentExecuteCommand(command);
+			if(IsFullLog) _loggerText.text += $"{CurrentExecuteCommand(command)}{Environment.NewLine}";
 
-			_loggerText.text += $"{Environment.NewLine}{log}";
+			_loggerText.text += $"{log}{Environment.NewLine}";
 			StartCoroutine(ScrollbarToEnd());
 		}
 
 		private string CurrentExecuteCommand(ICommand command)
 		{
-			if (!IsFullLog && !Tools.IsNull(command)) return null;
+			if (Tools.IsNull(command)) return null;
 
 			string tempLog = $"{Tools.GetColoredRichText("Execute:", TypeColor.Green)} " +
 				$"{command.ToString().Replace(command.GetType().Name, Tools.GetColoredRichText(command.GetType().Name, TypeColor.Yellow))}";
