@@ -4,6 +4,7 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
+	[Command]
 	public class LogFullCommand : ICommand
 	{
 		public string Name { get => "Log.Full"; set { } }

@@ -5,6 +5,7 @@ using Itibsoft.ConsoleDeveloper.Utils;
 
 namespace Itibsoft.ConsoleDeveloper.Commands
 {
+	[Command]
 	public class HelpCommand : ICommand
 	{
 		public string Name { get => "Help"; set { } }

@@ -5,32 +5,19 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
+using System.Reflection;
 
 namespace Itibsoft.ConsoleDeveloper.Console
 {
 	public class CommandsList : MonoBehaviour
 	{
 		public static CommandsList Instance;
-		public List<ICommand> AddingCommands = new List<ICommand>
-		{
-			new HelpCommand(),
-			new LogFullCommand(),
-			new ClearConsoleCommand()
-		};
 		public List<ICommand> Commands = new List<ICommand>();
 
 		private void Awake()
 		{
 			Instance = this;
-			Commands.AddRange(AddingCommands);
-			var temp = Resources.LoadAll("EventCommands", typeof(ICommand));
-			foreach (var commandObject in temp)
-			{
-				if(commandObject is ICommand command)
-				{
-					Commands.Add(command);
-				}
-			}
+			Commands.AddRange(AddingCommands());
 		}
 		public ICommand GetCommand(string name)
 		{
@@ -40,7 +27,7 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 			foreach (var command in Commands)
 			{
-				if(command.Name.ToLower() == name.ToLower().Trim('/'))
+				if (command.Name.ToLower() == name.ToLower().Trim('/'))
 				{
 					tempCommand = command;
 					break;
@@ -48,6 +35,30 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			}
 
 			return tempCommand;
+		}
+
+		private List<ICommand> AddingCommands()
+		{
+			List<ICommand> commands = new List<ICommand>();
+
+			IEnumerable<Type> typesWithMyAttribute =
+			from type in Assembly.GetExecutingAssembly().GetTypes()
+			where type.IsDefined(typeof(CommandAttribute), false)
+			select type;
+
+			typesWithMyAttribute.ToList().ForEach(type =>
+			{
+				commands.Add(Activator.CreateInstance(type) as ICommand);
+			});
+
+			UnityEngine.Object[] eventCommandsObjects = Resources.LoadAll("EventCommands", typeof(ICommand));
+
+			eventCommandsObjects.ToList().ForEach(eventCommandObject => 
+			{
+				if (eventCommandObject is ICommand command) commands.Add(command);
+			});
+
+			return commands;
 		}
 	}
 }

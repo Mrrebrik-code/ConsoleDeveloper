@@ -58,8 +58,6 @@ public class ConsoleDeveloperEditor : EditorWindow
 			_object = command;
 			_commands.Add(command);
 			CommandsList.Instance.Commands.Add(command);
-
-
 		}
 		if(_object != null)
 		{
