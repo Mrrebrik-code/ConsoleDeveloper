@@ -8,17 +8,17 @@ using UnityEngine.UI;
 
 namespace Itibsoft.ConsoleDeveloper.Console
 {
-	public class Logger : MonoBehaviour
+	public class Logger : Singleton<Logger>
 	{
-		public static Logger Instance;
-
 		[SerializeField] private Scrollbar _scrollbar;
 		[SerializeField] private TMP_Text _loggerText;
 
 		public bool IsFullLog{ get; set; } = true;
 
-		private void Awake() => Instance = this;
-
+		public override void Awake()
+		{
+			base.Awake();
+		}
 		public void AddLog(string log, ICommand command = null)
 		{
 			if(IsFullLog) _loggerText.text += $"{CurrentExecuteCommand(command)}{Environment.NewLine}";

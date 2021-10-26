@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[AttributeUsage(AttributeTargets.Class)]
-public class CommandAttribute : Attribute
+namespace Itibsoft.ConsoleDeveloper.Utils
 {
+	[AttributeUsage(AttributeTargets.Class)]
+	public class CommandAttribute : Attribute
+	{
 
+	}
 }
+

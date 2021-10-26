@@ -9,16 +9,17 @@ using System.Reflection;
 
 namespace Itibsoft.ConsoleDeveloper.Console
 {
-	public class CommandsList : MonoBehaviour
+	public class CommandsList : Singleton<CommandsList>
 	{
-		public static CommandsList Instance;
 		public List<ICommand> Commands = new List<ICommand>();
+		public override bool IsDontDestroyOnLoad { get; set; } = true;
 
-		private void Awake()
+		public override void Awake()
 		{
-			Instance = this;
+			base.Awake();
 			Commands.AddRange(AddingCommands());
 		}
+
 		public ICommand GetCommand(string name)
 		{
 			if (Tools.IsNull(name)) return null;
