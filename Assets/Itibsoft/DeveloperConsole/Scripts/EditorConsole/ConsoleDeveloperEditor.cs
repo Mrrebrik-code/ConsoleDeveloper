@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Itibsoft.ConsoleDeveloper.Core;
 using Itibsoft.ConsoleDeveloper.Console;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Linq;
 
 public class ConsoleDeveloperEditor : EditorWindow
 {
-	//ьюакнммюъ мюйхдйю асдсыецн нймю ..опнбепйю..
 	private bool _isEnabled = false;
 	private bool _isMain;
 	private Object _object;
@@ -73,3 +73,4 @@ public class ConsoleDeveloperEditor : EditorWindow
 		
 	}
 }
+#endif

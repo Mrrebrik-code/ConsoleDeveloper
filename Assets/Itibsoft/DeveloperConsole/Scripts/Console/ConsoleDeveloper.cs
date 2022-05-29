@@ -1,6 +1,7 @@
 using Itibsoft.ConsoleDeveloper.Core;
 using Itibsoft.ConsoleDeveloper.Utils;
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace Itibsoft.ConsoleDeveloper.Console
@@ -12,10 +13,15 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		[SerializeField] private Logger _logger;
 		[SerializeField] private Buffer _buffer;
 		[SerializeField] private Input _input;
+		[SerializeField] private TMP_Text _versionConsoleText;
 
 		private HistoryCommands _history = new HistoryCommands();
 
-		private void Start() => _inputHandler.KeyDownEvent += OnKeyHandler;
+		private void Start()
+		{
+			_inputHandler.KeyDownEvent += OnKeyHandler;
+			_versionConsoleText.text = $"ConsoleDeveloper v{Application.version} by Itibsoft";
+		}
 
 		private void OnKeyHandler(KeyCode key)
 		{

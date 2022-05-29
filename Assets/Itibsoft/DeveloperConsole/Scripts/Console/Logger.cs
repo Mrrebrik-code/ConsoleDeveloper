@@ -18,7 +18,18 @@ namespace Itibsoft.ConsoleDeveloper.Console
 		public override void Awake()
 		{
 			base.Awake();
+			Application.logMessageReceived += HandleLogUnity;
+
+			
 		}
+
+		private void HandleLogUnity(string condition, string stackTrace, LogType type)
+		{
+			if(type == LogType.Log) AddLog($"Log: {condition}");
+			else if(type == LogType.Error) AddLog($"Error: {Tools.GetColoredRichText(condition, TypeColor.Red)}");
+			else AddLog($"Warning: {Tools.GetColoredRichText(condition, TypeColor.Yellow)}");
+		}
+
 		public void AddLog(string log, ICommand command = null)
 		{
 			if(IsFullLog) _loggerText.text += $"{CurrentExecuteCommand(command)}{Environment.NewLine}";

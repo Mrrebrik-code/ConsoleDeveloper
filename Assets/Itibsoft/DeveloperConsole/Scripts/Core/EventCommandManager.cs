@@ -48,6 +48,7 @@ public class EventCommandManager : Singleton<EventCommandManager>
 			return;
 		}
 		var command = _commands[nameEvent];
+		Debug.Log("asd");
 		command.Execute();
 	}
 }
