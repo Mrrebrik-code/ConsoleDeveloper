@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TestEvent : MonoBehaviour, IEventCommand
 {
-	[CommandEvent("EventTest")]
+	[SerializeField] private GameObject _gameObject;
+	private bool _isActive = false;
+
+	[CommandEvent("OnOfGameObject")]
 	public void Execute()
 	{
-		Debug.Log("Test");
+		_isActive = !_isActive;
+		_gameObject.SetActive(_isActive);
 	}
 }

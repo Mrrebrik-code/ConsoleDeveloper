@@ -8,14 +8,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Logger = Itibsoft.ConsoleDeveloper.Console.Logger;
 
-public class EventCommandManager : MonoBehaviour
+public class EventCommandManager : Singleton<EventCommandManager>
 {
-	public static EventCommandManager Instance { get; private set; }
 	private Dictionary<string, IEventCommand> _commands = new Dictionary<string, IEventCommand>();
-	private void Start()
-	{
-		Instance = this;
 
+	public override void Awake()
+	{
+		base.Awake();
+		Initializtion();
+	}
+
+	private void Initializtion()
+	{
 		List<GameObject> rootObjectsInScene = new List<GameObject>();
 		Scene scene = SceneManager.GetActiveScene();
 		scene.GetRootGameObjects(rootObjectsInScene);

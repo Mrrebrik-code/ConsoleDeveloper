@@ -3,6 +3,8 @@ using Itibsoft.ConsoleDeveloper.Console;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
+
 public class ConsoleDeveloperEditor : EditorWindow
 {
 	//ÿ¿¡ÀŒÕÕ¿ﬂ Õ¿ »ƒ ¿ ¡”ƒ”Ÿ≈√Œ Œ Õ¿ ..œ–Œ¬≈– ¿..
@@ -10,66 +12,64 @@ public class ConsoleDeveloperEditor : EditorWindow
 	private bool _isMain;
 	private Object _object;
 
-	[MenuItem("Window/Itibsoft/ConsoleDeveloper")]
+	private List<Object> _list = new List<Object>();
+
+	[MenuItem("Tools/Itibsoft/ConsoleDeveloper")]
 	public static void ShowWindow()
 	{
 		GetWindow(typeof(ConsoleDeveloperEditor));
 	}
 	private void OnGUI()
 	{
-		if(_isMain) GUIGroupEnabled();
-		else
-		{
-			GUIGroupNOMain();
-		}
-	}
-
-	private void GUIGroupEnabled()
-	{
-		_isEnabled = EditorGUILayout.BeginToggleGroup("Enabled:", _isEnabled);
-		if (GUILayout.Button("Click"))
-		{
-			_isMain = false;
-		}
-		EditorGUILayout.EndToggleGroup();
+		GUIGroupNOMain();
 	}
 
 	private string _nameCommand;
 	private string _descriptionCommand;
+	private string _eventCommand;
 
 	public List<ICommand> _commands = new List<ICommand>();
 
 	private void GUIGroupNOMain()
 	{
-		if (GUILayout.Button("Click"))
-		{
-			_isMain = true;
-		}
-		_object = EditorGUILayout.ObjectField(_object, typeof(ICommand), true);
+		_list = Resources.LoadAll("EventCommands", typeof(ICommand)).ToList();
 		_nameCommand = EditorGUILayout.TextField("Name", _nameCommand);
 		_descriptionCommand = EditorGUILayout.TextField("Description", _descriptionCommand);
+		_eventCommand = EditorGUILayout.TextField("CommandEvent", _eventCommand);
 		if (GUILayout.Button("Create"))
-		{
+		{ 
+			if (_nameCommand == "" | _descriptionCommand == "" | _eventCommand == "") return;
+
 			EventCommand command = CreateInstance<EventCommand>();
 			AssetDatabase.CreateAsset(command, $"Assets/Itibsoft/DeveloperConsole/Resources/EventCommands/{_nameCommand}.asset");
 			AssetDatabase.SaveAssets();
 			command.Name = _nameCommand;
 			command.Description = _descriptionCommand;
+			command.EventExecute = _eventCommand;
 			_object = command;
 			_commands.Add(command);
 			CommandsList.Instance.Commands.Add(command);
+
+			_nameCommand = "";
+			_descriptionCommand = "";
+			_eventCommand = "";
+
+			_list.Add(command);
 		}
-		if(_object != null)
+
+		foreach (var item in _list)
 		{
-			EditorGUILayout.LabelField(CommandsList.Instance.Commands.Count.ToString());
-			SerializedObject serObj = new SerializedObject(_object);
-			SerializedProperty serProp = serObj.FindProperty("EventExecute");
-			EditorGUILayout.PropertyField(serProp);
-			serObj.ApplyModifiedProperties();
+			EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.ObjectField(item, typeof(ICommand), true);
+
+			if (GUILayout.Button("run")) ((ICommand)item).Execute();
+			if (GUILayout.Button("info")) Debug.Log(((ICommand)item).Description);
+			if (GUILayout.Button("del"))
+			{
+				AssetDatabase.DeleteAsset($"Assets/Itibsoft/DeveloperConsole/Resources/EventCommands/{((ICommand)item).Name}.asset");
+			}
+			EditorGUILayout.EndHorizontal();
 		}
 		
-		
-
-
 	}
 }
