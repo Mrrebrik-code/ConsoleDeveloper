@@ -8,14 +8,14 @@ namespace Itibsoft.ConsoleDeveloper.Core
 	{
 		[SerializeField] private string _name;
 		[SerializeField] private string _description;
-		public UnityEvent EventExecute;
+		public string EventExecute;
 		public string Name { get { return _name; } set { _name = value; } }
 
 		public string Description { get { return _description; } set { _description = value; } }
 
 		public void Execute()
 		{
-			EventExecute?.Invoke();
+			EventCommandManager.Instance.InvokeCommand(EventExecute);
 		}
 	}
 }

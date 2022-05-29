@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 513b4bcbc21c5804da534fa519999c69, type: 3}
-  m_Name: Test
+  m_Name: EventTest
   m_EditorClassIdentifier: 
-  _name: Test
-  _description: Test123
-  EventExecute: aasas
+  _name: Event
+  _description: Test event to command monobehaviour
+  EventExecute: EventTest
