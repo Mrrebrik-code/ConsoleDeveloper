@@ -130,21 +130,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 255430282278318327, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
     - target: {fileID: 255430282459085844, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 255430282459085844, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255430282459085844, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 255430283101107896, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
       propertyPath: m_IsActive
@@ -155,8 +147,8 @@ PrefabInstance:
       value: ConsoleDeveloper
       objectReference: {fileID: 0}
     - target: {fileID: 255430283748438541, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
+      propertyPath: m_SortingOrder
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 255430283748438542, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
       propertyPath: m_Pivot.x
@@ -242,10 +234,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 255430283748439537, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
-      propertyPath: _versionConsoleText
-      value: 
-      objectReference: {fileID: 1957910785}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
 --- !u!1 &268603850
@@ -662,14 +650,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 0}
---- !u!114 &1957910785 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 255430283184247629, guid: 9fb0a4fabd26b0f429dafee6fc5df1c7, type: 3}
-  m_PrefabInstance: {fileID: 85342083}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
