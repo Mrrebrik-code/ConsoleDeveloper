@@ -10,10 +10,12 @@ namespace Itibsoft.ConsoleDeveloper.Console
 	{
 		[SerializeField] private InputHandler _inputHandler;
 		[SerializeField] private GameObject _consoleObject;
+		[SerializeField] private GameObject _inputDefaultObject;
 		[SerializeField] private Logger _logger;
 		[SerializeField] private Buffer _buffer;
-		[SerializeField] private Input _input;
+		[SerializeField] private Input[] _inputs;
 		[SerializeField] private TMP_Text _versionConsoleText;
+		[SerializeField] private bool _isDefault = false;
 
 		private HistoryCommands _history = new HistoryCommands();
 
@@ -28,7 +30,8 @@ namespace Itibsoft.ConsoleDeveloper.Console
 			switch(key)
 			{
 				case KeyCode.BackQuote:
-					_consoleObject.SetActive(!_consoleObject.activeInHierarchy);
+					if (_isDefault == false) _consoleObject.SetActive(!_consoleObject.activeInHierarchy);
+					else _inputDefaultObject.SetActive(!_inputDefaultObject.activeInHierarchy);
 					break;
 				case KeyCode.Return:
 					Send();
@@ -44,20 +47,28 @@ namespace Itibsoft.ConsoleDeveloper.Console
 
 		public void GetHistoryCommandToInput(bool vector)
 		{
-			if (_input.IsAllowInput)
+			foreach (var input in _inputs)
 			{
-				ICommand command = _history.GetCommandFromHistory(vector);
-				if (command != null) _input.SetInputText(command.Name);
+				if (input.IsAllowInput)
+				{
+					ICommand command = _history.GetCommandFromHistory(vector);
+					if (command != null) input.SetInputText(command.Name);
+				}
 			}
+			
 		}
 		public void Send()
 		{
-			ICommand command = CommandsList.Instance.GetCommand(_input.GetInputText());
+			foreach (var input in _inputs)
+			{
+				ICommand command = CommandsList.Instance.GetCommand(input.GetInputText());
 
-			if (command != null) ExecuteCommand(command);
-			else Logger.Instance.AddLog(Tools.GetColoredRichText($"Error: ", TypeColor.Red) + _input.GetInputText() + " - " + Tools.GetColoredRichText("This command is not recognized", TypeColor.Yellow) + Environment.NewLine);
+				if (command != null) ExecuteCommand(command);
+				else Logger.Instance.AddLog(Tools.GetColoredRichText($"Error: ", TypeColor.Red) + input.GetInputText() + " - " + Tools.GetColoredRichText("This command is not recognized", TypeColor.Yellow) + Environment.NewLine);
 
-			_input.ClearInputField();
+				input.ClearInputField();
+			}
+			
 		}
 
 		private void ExecuteCommand(ICommand command)
